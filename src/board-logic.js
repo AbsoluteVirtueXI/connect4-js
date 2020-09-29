@@ -30,8 +30,8 @@ const checkVictory = (pos, gameState) => {
     if (
         checkVert(pos, gameState) ||
         checkHoriz(pos, gameState) ||
-        checkDiagTopRight(pos, gameState) ||
-        checkDiagBotRight(pos, gameState)
+        checkDiagBotRight(pos, gameState) ||
+        checkDiagTopRight(pos, gameState)
     ) {
         gameState.winner = gameState.currentPlayer
         gameState.isFinished = true
@@ -97,9 +97,10 @@ const checkDiagBotRight = (pos, gameState) => {
 }
 
 const checkDiagTopRight = (pos, gameState) => {
-    pos.column = gameState.nbColumn - 1 - pos.column
+    const posCopy = { ...pos }
+    posCopy.column = gameState.nbColumn - 1 - posCopy.column
     gameState.board.forEach((row) => row.reverse())
-    let ret = checkDiagBotRight(pos, gameState)
+    let ret = checkDiagBotRight(posCopy, gameState)
     gameState.board.forEach((row) => row.reverse())
     return ret
 }
