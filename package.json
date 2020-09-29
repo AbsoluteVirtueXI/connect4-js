@@ -10,5 +10,9 @@
   "devDependencies": {
     "eslint": "^7.9.0",
     "prettier": "^2.1.2"
+  },
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "readline-sync": "^1.4.10"
   }
 }
